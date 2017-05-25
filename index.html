@@ -20,6 +20,14 @@
         .wrapperClass {
             position: relative;
         }
+        .requiredClass {
+            box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+            position: relative;
+            top: 0px;
+            left: 0px;
+            margin: 5px 5px 5px 5px;
+        }
+
     </style>
 </head>
 
@@ -27,19 +35,20 @@
     <h1>Добро пожаловать на наш сайт!</h1>
     <div class="wrapperClass">
         <span class="captionClass">First Name:</span>
-        <input class="fieldClass" type="text"><br>
+        <input id ="firstName" class = "requiredClass" type="text" required><br>
         <span class="captionClass">Last Name:</span>
-        <input class="fieldClass" type="text"><br>
+        <input id ="lastName" class = "requiredClass" type="text" required><br>
         <span class="captionClass">Email:</span>
-        <input class="fieldClass" type="text"><br>
+        <input id ="email" class = "requiredClass" type="text" required><br>
         <span class="captionClass">Country:</span>
-        <select class="fieldClass">
+        <select id = "country" class="fieldClass">
               <option value="volvo">USA</option>
             </select><br>
-        <span class="captionClass">City:</span>
+        <span id ="City" class="captionClass">City:</span>
         <select class="fieldClass">
               <option value="volvo">New York</option>
             </select><br>
+        <button name="Submit" href="google.com">Submit</button>
         <script src="script.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
     </div>
