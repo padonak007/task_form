@@ -1,5 +1,4 @@
-var firstName,
-    lastName,
+var lastName,
     email,
     city,
     country,
@@ -33,10 +32,9 @@ var cities = {
 }
 
 fillCountriesDropdown();
-fillCitiesDropdown("USA");
 
 $firstName.change(function () {
-    firstName = $firstName.val();
+    var firstName = $firstName.val();
     checkifEmpty(firstName, $firstName);
     console.log("First name:" + firstName);
 });
@@ -53,22 +51,8 @@ $email.change(function () {
     console.log("Email:" + email);
 });
 
-$country.change(function(event){
-    console.log(event);
-    switch (event.target.value) {
-        case countries.Germany:
-            $city.empty();
-            fillCitiesDropdown(countries.Germany);
-            break;
-        case (countries.USA):
-            $city.empty();
-            fillCitiesDropdown(countries.USA);
-            break;
-        case (countries.France):
-            $city.empty();
-            fillCitiesDropdown(countries.France);
-            break;
-    }
+$country.change(function (event) {
+    fillCitiesDropdown(event.target.value);
 });
 
 function validateEmail(fieldValue,$field) {
@@ -96,10 +80,6 @@ function checkifEmpty(fieldValue, $field) {
     }
 }
 
-function dependantCityCalculation () {
-
-}
-
 function fillCountriesDropdown() {
     for (var key in countries) {
         $("<option/>")
@@ -109,6 +89,7 @@ function fillCountriesDropdown() {
 }
 
 function fillCitiesDropdown(country) {
+    $city.empty();
     for (var key in cities[country]) {
         $("<option/>")
         .text(cities[country][key])
