@@ -1,8 +1,45 @@
-var firstName, lastName, email, city, country;
-var $firstName = $("#firstName"),
+var firstName,
+    lastName,
+    email,
+    city,
+    country,
+    $firstName = $("#firstName"),
     $lastName = $("#lastName"),
-    $email = $("#email");
-var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    $email = $("#email"),
+    $country = $("#country"),
+    $city = $("#city"),
+    re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+var countries = {
+    USA: "USA",
+    Germany: "Germany",
+    France:"France",
+};
+
+var cities = {
+    USA: {
+        newYork:"New York",
+        washington:"Washington DC",
+        seatle:"Seatle",
+    },
+    Germany: {
+        berlin:"Berlin",
+        frankfurt:"Frankfurt",
+        munchen:"Munchen",
+    },
+    France: {
+        paris:"Paris",
+    },
+}
+
+fillCountriesDropdown();
+fillCitiesDropdown("USA");
+
+for (var key in cities.USA){
+    $("<option/>")
+    .text(cities.USA[key])
+    .appendTo($city);
+};
 
 $firstName.change(function () {
     firstName = $firstName.val();
@@ -20,6 +57,21 @@ $email.change(function () {
     email = $("#email").val();
     validateEmail(email,$email);
     console.log("Email:" + email);
+});
+
+$country.change(function(event){
+    console.log(event);
+    switch (event.target.value) {
+        case countries.Germany:
+            fillCitiesDropdown(countries.Germany);
+            break;
+        case (countries.USA):
+            fillCitiesDropdown(countries.USA);
+            break;
+        case (countries.France):
+            fillCitiesDropdown(countries.France);
+            break;
+    }
 });
 
 function validateEmail(fieldValue,$field) {
@@ -45,4 +97,24 @@ function checkifEmpty(fieldValue, $field) {
         $field.addClass("requiredClass");
         return true;
     }
+}
+
+function dependantCityCalculation () {
+
+}
+
+function fillCountriesDropdown() {
+    for (var key in countries) {
+        $("<option/>")
+        .text(countries[key])
+        .appendTo($country);
+    }
+}
+
+function fillCitiesDropdown(country) {
+    for (var key in cities.country) {
+        $("<option/>")
+        .text(cities.country[key])
+        .appendTo($city);
+    };
 }
