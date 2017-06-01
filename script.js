@@ -35,12 +35,6 @@ var cities = {
 fillCountriesDropdown();
 fillCitiesDropdown("USA");
 
-for (var key in cities.USA){
-    $("<option/>")
-    .text(cities.USA[key])
-    .appendTo($city);
-};
-
 $firstName.change(function () {
     firstName = $firstName.val();
     checkifEmpty(firstName, $firstName);
@@ -63,12 +57,15 @@ $country.change(function(event){
     console.log(event);
     switch (event.target.value) {
         case countries.Germany:
+            $city.empty();
             fillCitiesDropdown(countries.Germany);
             break;
         case (countries.USA):
+            $city.empty();
             fillCitiesDropdown(countries.USA);
             break;
         case (countries.France):
+            $city.empty();
             fillCitiesDropdown(countries.France);
             break;
     }
@@ -112,9 +109,9 @@ function fillCountriesDropdown() {
 }
 
 function fillCitiesDropdown(country) {
-    for (var key in cities.country) {
+    for (var key in cities[country]) {
         $("<option/>")
-        .text(cities.country[key])
+        .text(cities[country][key])
         .appendTo($city);
     };
 }
