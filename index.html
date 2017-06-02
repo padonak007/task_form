@@ -27,6 +27,9 @@
             left: 0px;
             margin: 5px 5px 5px 5px;
         }
+        .inputCollectionClass {
+            position:relative;
+        }
 
     </style>
 </head>
@@ -34,24 +37,36 @@
 <body>
     <h3>Test form validation</h3>
     <div class="wrapperClass">
-        <span class="captionClass">First Name:</span>
-        <input id ="firstName" class = "requiredClass" type="text" required><br>
-        <span class="captionClass">Last Name:</span>
-        <input id ="lastName" class = "requiredClass" type="text" required><br>
-        <span class="captionClass">Email:</span>
-        <input id ="email" class = "requiredClass" type="text" required><br>
-        <span class="captionClass">Country:</span>
-        <select id = "country" class="fieldClass">
-            <option data-not-selected-option="true">Choose country</option>
-            </select><br>
-        <span class="captionClass">City:</span>
-        <select id ="city" class="fieldClass">
-            <option>Choose city</option>
-            </select><br>
-        <button name="Submit" href="google.com">Submit</button>
-        <script src="script.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-    </div>
+        <div class="inputCollectionClass">
+            <span class="captionClass">First Name:</span>
+            <input id="firstName" class="requiredClass" type="text" required>
+        </div>
+        <div class="inputCollectionClass">
+            <span class="captionClass">Last Name:</span>
+            <input id="lastName" class="requiredClass" type="text" required>
+        </div>
+        <div class="inputCollectionClass">
+            <span class="captionClass">Email:</span>
+            <input id="email" class="requiredClass" type="text" required>
+        </div>
+        <div class="inputCollectionClass">
+            <span class="captionClass">Country:</span>
+            <select id="country" class="fieldClass" data-is-not-empty="false">
+                <option data-not-selected-option="true">Choose country</option>
+            </select>
+            <a href="#" data-add="true">Add</a>
+        </div>
+        <div class="inputCollectionClass">
+            <span class="captionClass">City:</span>
+            <select id="city" class="fieldClass" data-is-not-empty="false">
+                <option>Choose city</option>
+            </select>
+            <a href="#" data-add="true">Add</a>
+        </div>
+            <button name="Submit">Submit</button>
+            <script src="script.js"></script>
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+        </div>
 </body>
 
 </html>
