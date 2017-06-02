@@ -1,6 +1,4 @@
-var lastName,
-    email,
-    city,
+var city,
     country,
     $firstName = $("#firstName"),
     $lastName = $("#lastName"),
@@ -40,18 +38,19 @@ $firstName.change(function () {
 });
 
 $lastName.change(function () {
-    lastName = $lastName.val();
+    var lastName = $lastName.val();
     checkifEmpty(lastName, $lastName);
     console.log("Last name:" + lastName);
 });
 
 $email.change(function () {
-    email = $("#email").val();
+    var email = $("#email").val();
     validateEmail(email,$email);
     console.log("Email:" + email);
 });
 
 $country.change(function (event) {
+    $("[data-not-selected-option]").remove();
     fillCitiesDropdown(event.target.value);
 });
 
