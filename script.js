@@ -1,6 +1,4 @@
-var city,
-    country,
-    $firstName = $("#firstName"),
+var $firstName = $("#firstName"),
     $lastName = $("#lastName"),
     $email = $("#email"),
     $country = $("#country"),
@@ -121,5 +119,7 @@ function addInputandButton(event) {
             $("<option/>")
             .text($(event.target).prev("input").val())
             .appendTo($(event.target).siblings("select"));
+            $(event.target).prev().remove();
+            $(event.target).remove();
         });
 }
